@@ -14,22 +14,19 @@ class MainViewController: UIViewController, PassDataBack {
         print("this is passed back \(data)")
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        // Do any additional setup after loading the view.
+        
     }
     @IBOutlet weak var valueFromDelegate: UILabel!
     
     @IBAction func goToSecondScreen(_ sender: Any) {
         if let inputValue = inputValueTextField.text {
             if !inputValue.isEmpty {
-               print(inputValue)
+                print(inputValue)
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let secondVC = storyBoard.instantiateViewController(withIdentifier: "secondScreen") as! SecondViewController
-//                secondVC.valueFromMain?.text = inputValue
+                
                 secondVC.delegate = self
                 secondVC.testValue = inputValue
                 secondVC.callBack = { text in
@@ -42,14 +39,4 @@ class MainViewController: UIViewController, PassDataBack {
     @IBOutlet weak var valueFromSecondScreen: UILabel!
     @IBOutlet weak var inputValueTextField: UITextField!
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
